@@ -1,0 +1,525 @@
+<html><head><base href=""><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Portal de Notícias</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+    :root {
+            --primary: #742273;
+            --secondary: #974796;
+            --accent: #BA6BB9;
+            --light: #ffffff;
+            --dark: #742273;
+            --success: #970097;
+            --text: #353535;
+    }
+    
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', system-ui, sans-serif;
+    }
+    
+    body {
+        background: var(--light);
+        color: var(--text);
+        line-height: 1.6;
+    }
+    
+    header {
+        background: var(--primary);
+        padding: 1rem 2rem;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    .header-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .logo {
+        color: var(--light);
+        font-size: 1.8rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+    
+    nav {
+        display: flex;
+        gap: 2rem;
+    }
+    
+    nav a {
+        color: var(--light);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s ease;
+    }
+    
+    nav a:hover {
+        color: var(--accent);
+    }
+    
+    .search-auth-container {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+    }
+    
+    .search {
+        display: flex;
+        gap: 0.5rem;
+    }
+    
+    .search input {
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 25px;
+        background: var(--light);
+        width: 250px;
+    }
+    
+    .search button {
+        background: var(--accent);
+        border: none;
+        border-radius: 50%;
+        width: 35px;
+        height: 35px;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .search button svg {
+        width: 18px;
+        height: 18px;
+        fill: white;
+    }
+    
+    .auth-buttons {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+    }
+    
+    .auth-button {
+        padding: 0.5rem 1.5rem;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        text-decoration: none;
+    }
+    
+    .register-btn {
+        background: var(--accent);
+        color: var(--light);
+    }
+    
+    .login-btn {
+        background: var(--primary);
+        color: var(--light);
+        border: 2px solid var(--light);
+    }
+    
+    .auth-button:hover {
+        transform: translateY(-2px);
+        opacity: 0.9;
+    }
+    
+    .categorias {
+        background: var(--secondary);
+        padding: 1rem;
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+    
+    .categoria {
+        background: var(--light);
+        color: var(--text);
+        padding: 0.5rem 1.5rem;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    
+    .categoria:hover {
+        background: var(--accent);
+        color: white;
+        transform: translateY(-2px);
+    }
+    
+    .banner {
+        height: 400px;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .carousel {
+        position: relative;
+        width: 100%;
+        height: 400px;
+    }
+    
+    .carousel-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+    
+    .carousel-item {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 0.8s ease-in-out;
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+    }
+    
+    .carousel-item.active {
+        opacity: 1;
+    }
+    
+    .carousel-item::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0,0,0,0.5);
+        z-index: 1;
+    }
+    
+    .carousel-content {
+        position: relative;
+        z-index: 2;
+    }
+    
+    .carousel-control {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 50px;
+        height: 50px;
+        background: rgba(255,255,255,0.3);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 3;
+        transition: background 0.3s ease;
+    }
+    
+    .carousel-control:hover {
+        background: rgba(255,255,255,0.5);
+    }
+    
+    .carousel-control.prev {
+        left: 20px;
+    }
+    
+    .carousel-control.next {
+        right: 20px;
+    }
+    
+    .carousel-control i {
+        color: white;
+        font-size: 24px;
+    }
+    
+    .noticias-section {
+        max-width: 1200px;
+        margin: 2rem auto;
+        padding: 0 1rem;
+    }
+    
+    .noticias-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+    }
+    
+    .post-button {
+        background: var(--success);
+        color: white;
+        padding: 0.75rem 1.5rem;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        text-decoration: none;
+        transition: transform 0.3s ease;
+    }
+    
+    .post-button:hover {
+        transform: translateY(-2px);
+    }
+    
+    .noticias-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+    }
+    
+    .noticia-card {
+        background: white;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease;
+    }
+    
+    .noticia-card:hover {
+        transform: translateY(-10px);
+    }
+    
+    .noticia-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+    
+    .noticia-content {
+        padding: 1.5rem;
+    }
+    
+    .noticia-content h3 {
+        color: var(--dark);
+        margin-bottom: 1rem;
+    }
+    
+    footer {
+        background: var(--primary);
+        color: var(--light);
+        text-align: center;
+        padding: 2rem;
+        margin-top: 4rem;
+    }
+    
+    @media (max-width: 768px) {
+        .header-content {
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .search-auth-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            width: 100%;
+        }
+        
+        .auth-buttons {
+            justify-content: center;
+        }
+        
+        .search input {
+            width: 100%;
+        }
+        
+        .banner h1 {
+            font-size: 2rem;
+        }
+    }
+    </style>
+    </head>
+    <body>
+    
+    <header>
+        <div class="header-content">
+            <div class="logo">Global Dev</div>
+            <nav>
+                <a href="https://globaldev.com/home">Início</a>
+                <a href="https://globaldev.com/news">Últimas Notícias</a>
+                <a href="https://globaldev.com/trending">Tendências</a>
+            </nav>
+            <div class="search-auth-container" style="display: flex; gap: 1rem; align-items: center;">
+                <div class="search">
+                    <input type="text" placeholder="Pesquisar notícias...">
+                    <button aria-label="Buscar">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="auth-buttons">
+                    <a href="cadastro.html" class="auth-button register-btn">Registrar</a>
+                    <a href="login.html" class="auth-button login-btn">Login</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <section class="categorias">
+        <div class="categoria" onclick="window.location.href='https://globaldev.com/categoria/tecnologia'">Tecnologia</div>
+        <div class="categoria" onclick="window.location.href='https://globaldev.com/categoria/desenvolvimento'">Desenvolvimento</div>
+        <div class="categoria" onclick="window.location.href='https://globaldev.com/categoria/inovacao'">Inovação</div>
+        <div class="categoria" onclick="window.location.href='https://globaldev.com/categoria/startups'">Startups</div>
+        <div class="categoria" onclick="window.location.href='https://www.rededecarreiras.com.br/'" >Carreira</div>
+    </section>
+    
+    <div class="banner">
+        <div class="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active" style="background-image: url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&h=400')">
+                    <div class="carousel-content">
+                        <h1>Recursos Humanos</h1>
+                        <p>Gestão de talentos e desenvolvimento profissional</p>
+                    </div>
+                </div>
+                <div class="carousel-item" style="background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&h=400')">
+                    <div class="carousel-content">
+                        <h1>Administração</h1>
+                        <p>Estratégias e gestão empresarial</p>
+                    </div>
+                </div>
+                <div class="carousel-item" style="background-image: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&h=400')">
+                    <div class="carousel-content">
+                        <h1>Tecnologia da Informação</h1>
+                        <p>Inovação e soluções digitais</p>
+                    </div>
+                </div>
+                <div class="carousel-item" style="background-image: url('https://images.unsplash.com/photo-1560750588-73207b1ef5b8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&h=400')">
+                    <div class="carousel-content">
+                        <h1>Estética</h1>
+                        <p>Beleza e bem-estar</p>
+                    </div>
+                </div>
+                <div class="carousel-item" style="background-image: url('https://img.freepik.com/fotos-gratis/higiene-e-cuidado-das-unhas-secando-o-esmalte_23-2148766572.jpg')">
+                    <div class="carousel-content">
+                        <h1>Manicure</h1>
+                        <p>Arte e cuidados com as unhas</p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-control prev" onclick="moveSlide(-1)">
+                <i class="fas fa-chevron-left"></i>
+            </div>
+            <div class="carousel-control next" onclick="moveSlide(1)">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </div>
+    </div>
+    
+    <section class="noticias-section">
+        <div class="noticias-header">
+            <h2>Notícias em Destaque</h2>
+            <a href="https://globaldev.com/post" class="post-button">Postar Notícia</a>
+        </div>
+        
+        <div class="noticias-grid">
+            <article class="noticia-card">
+                <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&h=200" 
+                     alt="Desenvolvedor trabalhando em código, ambiente moderno com múltiplos monitores mostrando linhas de código" 
+                     width="400" height="200">
+                <div class="noticia-content">
+                    <h3>Novas Tendências em Desenvolvimento Web 2024</h3>
+                    <p>Descubra as tecnologias que estão revolucionando o desenvolvimento web neste ano.</p>
+                </div>
+            </article>
+            
+            <article class="noticia-card">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&h=200" 
+                     alt="Visualização artística de redes neurais e circuitos de IA com efeitos de luz azul" 
+                     width="400" height="200">
+                <div class="noticia-content">
+                    <h3>IA na Programação: O Futuro é Agora</h3>
+                    <p>Como a inteligência artificial está transformando a forma como desenvolvemos software.</p>
+                </div>
+            </article>
+            
+            <article class="noticia-card">
+                <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&h=200" 
+                     alt="Grande conferência de tecnologia com palco iluminado e público assistindo apresentação" 
+                     width="400" height="200">
+                <div class="noticia-content">
+                    <h3>Principais Eventos Tech de 2024</h3>
+                    <p>Confira os eventos imperdíveis para desenvolvedores neste ano.</p>
+                </div>
+            </article>
+    
+            <article class="noticia-card">
+                <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&h=200" 
+                     alt="Conceito de cybersegurança com cadeado digital e código binário" 
+                     width="400" height="200">
+                <div class="noticia-content">
+                    <h3>Segurança Cibernética em 2024</h3>
+                    <p>As últimas tendências em proteção de dados e segurança digital.</p>
+                </div>
+            </article>
+    
+            <article class="noticia-card">
+                <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&h=200" 
+                     alt="Representação visual de cloud computing com ícones de servidor e conexões em nuvem" 
+                     width="400" height="200">
+                <div class="noticia-content">
+                    <h3>Cloud Computing: Evolução Contínua</h3>
+                    <p>Novidades e avanços na computação em nuvem para desenvolvedores.</p>
+                </div>
+            </article>
+    
+            <article class="noticia-card">
+                <img src="https://images.unsplash.com/photo-1526498460520-4c246339dccb?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&h=200" 
+                     alt="Desenvolvimento mobile com smartphone e código de programação" 
+                     width="400" height="200">
+                <div class="noticia-content">
+                    <h3>Desenvolvimento Mobile em 2024</h3>
+                    <p>As frameworks e tecnologias mais populares para apps móveis.</p>
+                </div>
+            </article>
+        </div>
+    </section>
+    
+    <footer>
+        <a href="politica e termo.html"><button>Política e Termos do site</button></a>
+        <p>&copy; 2024 Global Dev - Transformando ideias em código</p>
+    </footer>
+    
+    <script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.carousel-item');
+    
+    function showSlide(n) {
+        slides.forEach(slide => slide.classList.remove('active'));
+        
+        currentSlide = n;
+        
+        if (currentSlide >= slides.length) {
+            currentSlide = 0;
+        }
+        if (currentSlide < 0) {
+            currentSlide = slides.length - 1;
+        }
+        
+        slides[currentSlide].classList.add('active');
+    }
+    
+    function moveSlide(direction) {
+        showSlide(currentSlide + direction);
+    }
+    
+    // Auto-rotate slides every 5 seconds
+    setInterval(() => moveSlide(1), 5000);
+    </script>
+    
+    </body></html>
