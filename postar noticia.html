@@ -78,6 +78,7 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Postar Notícia</title>
+    <link rel="shortcut icon" href="favicon - globaldev.png" type="image/x-icon">
     <style>
         * {
             margin: 0;
@@ -257,7 +258,9 @@ $conn->close();
 <body>
     <div class="container">
         <h2>Postar Notícia</h2>
-        <form id="noticiaForm" action="salvar_noticia.php" method="POST" enctype="multipart/form-data">
+        <!--PARA O BANCO DE DADOS FUNCIONAR, TROQUE O CODIGO FORM PARA ESTE: 
+        <form id="noticiaForm" action="salvar_noticia.php" method="POST" enctype="multipart/form-data"> -->
+        <form id="noticiaForm" action="index2.html" method="POST" enctype="multipart/form-data">
             <label for="titulo">Título da Notícia</label>
             <input type="text" id="titulo" name="titulo" placeholder="Digite um título envolvente" required>
         
@@ -275,9 +278,17 @@ $conn->close();
         
             <button type="submit">Publicar Notícia</button>
         </form>
+        <script>
+            // Adicionando evento de clique ao botão
+            document.getElementById('noticiaForm').addEventListener('submit', function(event) {
+                event.preventDefault(); // Evita o envio imediato do formulário
+                alert('Postagem Bem sucedida!');
+                this.submit(); // Envia o formulário após o alerta
+            });
+        </script>
         
         <div class="back-link">
-            <a href="index.html">Voltar para a Página Inicial</a>
+            <a href="index2.html">Voltar para a Página Inicial</a>
         </div>
     </div>
 
