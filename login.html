@@ -1,7 +1,14 @@
-<html><head><base href=""><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Login - Global Dev</title>
+<html>
+
+<head>
+    <base href="">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Global Dev</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="shortcut icon" href="favicon - globaldev.png" type="image/x-icon">
     <style>
-    :root {
+        :root {
             --primary: #742273;
             --secondary: #974796;
             --accent: #BA6BB9;
@@ -9,212 +16,214 @@
             --dark: #742273;
             --success: #970097;
             --text: #353535;
-    }
-    
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: 'Segoe UI', system-ui, sans-serif;
-    }
-    
-    body {
-        background: var(--light);
-        background-color: #742273;
-        color: var(--text);
-        line-height: 1.6;
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    
-    .login-container {
-        background: white;
-        padding: 2rem;
-        border-radius: 15px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        width: 100%;
-        max-width: 400px;
-        animation: fadeIn 0.5s ease;
-    }
-    
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-            transform: translateY(-20px);
         }
-        to {
-            opacity: 1;
-            transform: translateY(0);
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
         }
-    }
-    
-    .login-header {
-        text-align: center;
-        margin-bottom: 2rem;
-    }
-    
-    .login-header h1 {
-        color: var(--primary);
-        font-size: 2rem;
-        margin-bottom: 0.5rem;
-    }
-    
-    .login-header p {
-        color: var(--secondary);
-    }
-    
-    .form-group {
-        margin-bottom: 1.5rem;
-        position: relative;
-    }
-    
-    .form-group label {
-        display: block;
-        margin-bottom: 0.5rem;
-        color: var(--dark);
-        font-weight: 500;
-    }
-    
-    .form-group input {
-        width: 100%;
-        padding: 0.75rem 1rem;
-        padding-left: 2.5rem;
-        border: 2px solid #e1e1e1;
-        border-radius: 8px;
-        transition: border-color 0.3s ease;
-    }
-    
-    .form-group input:focus {
-        outline: none;
-        border-color: var(--accent);
-    }
-    
-    .form-group i {
-        position: absolute;
-        left: 1rem;
-        top: 48px;
-        color: #742273;
-    }
-    
-    .remember-forgot {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 1.5rem;
-    }
-    
-    .remember-me {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-    }
-    
-    .forgot-password {
-        color: var(--accent);
-        text-decoration: none;
-        font-size: 0.9rem;
-    }
-    
-    .forgot-password:hover {
-        text-decoration: underline;
-    }
-    
-    .login-button {
-        width: 100%;
-        padding: 1rem;
-        background: var(--accent);
-        color: white;
-        border: none;
-        border-radius: 8px;
-        font-weight: 600;
-        cursor: pointer;
-        transition: background 0.3s ease;
-    }
-    
-    .login-button:hover {
-        background: #430046;
-    }
-    
-    .social-login {
-        margin-top: 2rem;
-        text-align: center;
-    }
-    
-    .social-login p {
-        color: #666;
-        margin-bottom: 1rem;
-        position: relative;
-    }
-    
- 
-    .social-login p::after {
-        right: 0;
-    }
-    
-    .social-buttons {
-        display: flex;
-        gap: 1rem;
-        justify-content: center;
-    }
-    
-    .social-button {
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border: 2px solid #e1e1e1;
-        cursor: pointer;
-        transition: transform 0.3s ease;
-    }
-    
-    .social-button:hover {
-        transform: translateY(-3px);
-    }
-    
-    .social-button i {
-        font-size: 1.2rem;
-    }
-    
-    .register-link {
-        text-align: center;
-        margin-top: 1.5rem;
-    }
-    
-    .register-link a {
-        color: var(--accent);
-        text-decoration: none;
-        font-weight: 500;
-    }
-    
-    .register-link a:hover {
-        text-decoration: underline;
-    }
+
+        body {
+            background: var(--light);
+            background-color: #742273;
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .login-header h1 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .login-header p {
+            color: var(--secondary);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            padding-left: 2.5rem;
+            border: 2px solid #e1e1e1;
+            border-radius: 8px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .form-group i {
+            position: absolute;
+            left: 1rem;
+            top: 48px;
+            color: #742273;
+        }
+
+        .remember-forgot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .forgot-password {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+
+        .login-button {
+            width: 100%;
+            padding: 1rem;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .login-button:hover {
+            background: #430046;
+        }
+
+        .social-login {
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .social-login p {
+            color: #666;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+
+        .social-login p::after {
+            right: 0;
+        }
+
+        .social-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .social-button {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #e1e1e1;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .social-button:hover {
+            transform: translateY(-3px);
+        }
+
+        .social-button i {
+            font-size: 1.2rem;
+        }
+
+        .register-link {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        .register-link a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .register-link a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
+
 <body>
     <div class="login-container">
         <div class="login-header">
             <h1>Bem-vindo de volta</h1>
             <p>Entre com suas credenciais para acessar</p>
         </div>
-        
+
         <form id="loginForm" onsubmit="return handleLogin(event)">
             <div class="form-group">
                 <label for="email">E-mail</label>
                 <i class="fas fa-envelope"></i>
                 <input type="email" id="email" required placeholder="Digite seu e-mail">
             </div>
-            
+
             <div class="form-group">
                 <label for="password">Senha</label>
                 <i class="fas fa-lock"></i>
                 <input type="password" id="password" required placeholder="Digite sua senha">
             </div>
-            
+
             <div class="remember-forgot">
                 <div class="remember-me">
                     <input type="checkbox" id="remember">
@@ -222,8 +231,8 @@
                 </div>
                 <a href="https://globaldev.com/forgot-password" class="forgot-password">Esqueceu a senha?</a>
             </div>
-            
-            <a href="index.html" style="padding: none;"> <button type="submit" class="login-button">Entrar</button></a>
+
+            <a href="index2.html" style="padding: none;"> <button type="submit" class="login-button">Entrar</button></a>
         </form>
         <div class="social-login">
             <p>Ou continue com</p>
@@ -239,34 +248,40 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="register-link">
             <p>Não tem uma conta? <a href="cadastro.html">Registre-se</a></p>
+            <div class="back-link">
+                <a href="index2.html">Voltar para a Página Inicial</a>
+            </div>
         </div>
     </div>
 
+
     <script>
-    function handleLogin(event) {
-        event.preventDefault();
-        
-        const email = document.getElementById('email').value;
-        const password = document.getElementById('password').value;
-        const remember = document.getElementById('remember').checked;
-        
-        // Aqui você implementaria a lógica de autenticação
-        console.log('Login attempt:', { email, password, remember });
-        
-        // Simulando uma autenticação bem-sucedida
-        setTimeout(() => {
-            window.location.href = 'index.html';
-        }, 1000);
-        
-        return false;
-    }
-    
-    function socialLogin(provider) {
-        // Implementar lógica de login social aqui
-        console.log(`Login com ${provider}`);
-    }
+        function handleLogin(event) {
+            event.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const remember = document.getElementById('remember').checked;
+
+            // Aqui você implementaria a lógica de autenticação
+            console.log('Login attempt:', { email, password, remember });
+
+            // Simulando uma autenticação bem-sucedida
+            setTimeout(() => {
+                window.location.href = 'index2.html';
+            }, 1000);
+
+            return false;
+        }
+
+        function socialLogin(provider) {
+            // Implementar lógica de login social aqui
+            console.log(`Login com ${provider}`);
+        }
     </script>
-</body></html>
+</body>
+
+</html>
